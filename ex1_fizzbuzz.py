@@ -2,14 +2,15 @@ import random
 
 # Exercise 1 
 
-def fizzbuzz(number):
-    if number % 3 == 0 or number % 5 == 0:
-        if number % 3 == 0 and number % 5 == 0:
-            print("FizzBuzz")
-        elif number % 3 == 0:
-            print("Fizz")
-        elif number % 5 == 0:
-            print("Buzz")
+def fizzbuzz(numbers):
+    for number in numbers:
+        if number % 3 == 0 or number % 5 == 0:
+            if number % 3 == 0 and number % 5 == 0:
+                print("FizzBuzz")
+            elif number % 3 == 0:
+                print("Fizz")
+            elif number % 5 == 0:
+                print("Buzz")
 
 
 #create list with random number between 0 and 100
