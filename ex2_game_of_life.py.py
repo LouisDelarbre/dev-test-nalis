@@ -1,5 +1,9 @@
 import random
 import copy
+import webbrowser
+import os
+
+my_origin_path = os.path.dirname(os.path.realpath(__file__)) 
 
 
 #number of step
@@ -25,7 +29,7 @@ def get_cell(i,j, matrix):
         return matrix[i][j]
 
 
-
+#one step of game_of_life
 def game_of_life(matrix):
     if not is_matrix(matrix):
         print("please give a correct matrix as parameter")
@@ -35,7 +39,7 @@ def game_of_life(matrix):
         for column in range(len(matrix[row])) :
             cell = get_cell(row,column, matrix) 
             neihbours = 0
-
+            #checking all the neibours cases
             if get_cell(row, column-1,matrix) == 1 : neihbours +=1
             if get_cell(row, column+1,matrix) == 1 : neihbours +=1
             if get_cell(row-1, column,matrix) == 1 : neihbours +=1
@@ -59,14 +63,68 @@ def game_of_life(matrix):
     
 
 
+# create one matrix in html
+def create_html_matrix(matrix):
+    html_matrix = '<table border="1" width="200" height="200">'
+    for i in matrix:
+        html_matrix += '<tr>'
+        for j in i:
+            if j == 0:
+               html_matrix += '<td></td>'
+            elif j == 1:
+                html_matrix += '<td bgcolor="black"></td>'
+
+
+        html_matrix += '</tr>'
+    html_matrix += '</table>'
+    return html_matrix
 
 
 
+#create a final page in html and open it
+def save_open_html(list_html):
+    with open(my_origin_path+'/gameoflife.html','w') as f:
 
-matrix = create_matrix(matrix_row,matrix_col)
-print(matrix)
+        message = f"""<html>
+        <head></head>
+        <body>
+        <h1> Response with final Matrix </h1>:
+        {html_array[-1]}
+        <hr>
+        <hr>
+        <hr>
+        <h1> Bellow, all the steps to have the final response : </h1>"""
+        
+        for index,i in enumerate(html_array):
+            message += f"<h1>Matrix with step num {index} </h1>"
+            message += i
 
-for i in range(steps):
-    matrix = game_of_life(matrix)
+        message += """
+        </body>
+        </html>"""
 
-print(matrix)
+        f.write(message)
+        f.close()
+
+
+    
+    filename = 'file://'+ my_origin_path + '/gameoflife.html'
+    webbrowser.open_new_tab(filename)
+
+
+
+if __name__ == '__main__':
+    matrix = create_matrix(matrix_row,matrix_col)
+    print(matrix)
+    #we will append  the html_matrix to html_array 
+    html_array = []
+
+    # executing the game of life X time (number of steps)
+    for _ in range(steps):
+        html_array.append(create_html_matrix(matrix))
+        matrix = game_of_life(matrix)
+    html_array.append(create_html_matrix(matrix))
+    
+    save_open_html(html_array)
+
+    print(matrix)
