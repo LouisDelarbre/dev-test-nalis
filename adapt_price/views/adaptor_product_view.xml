@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="wal_adaptor_product_view_tree" model="ir.ui.view">
+        <field name="name">adaptor.product.tree</field>
+        <field name="model">adaptor.product</field>
+        <field name="arch" type="xml">
+            <tree string="Modifications">
+                    <field name="wal_date_modif_resume"></field>
+                    <field name="wal_product_id"></field>
+                    <field name="wal_field_type"/>
+                    <field name="wal_old"/>
+                    <field name="wal_new"/>
+            </tree>
+        </field>
+        </record>
+
+
+        <record  id="wal_adaptation_product_action" model="ir.actions.act_window">
+        <field name="name">Produits Adaptés</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">adaptor.product</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+        <p class='o_view_nocontent_smiling_face'>
+            create a new adaption ! 
+        </p>
+        </field>
+
+    
+    </record>
+
+
+</odoo>

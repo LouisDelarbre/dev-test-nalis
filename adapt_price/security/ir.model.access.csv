@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.adaptor.resume,access_adaptor_resume,adapt_price.model_adaptor_resume,base.group_user,1,1,1,1
+access.adaptor.product.type,access_adaptor_product,adapt_price.model_adaptor_product,base.group_user,1,1,1,1
+access.adaptor.import.property,access_adaptor_import_property,adapt_price.model_adaptor_import_property,base.group_user,1,1,1,1
+

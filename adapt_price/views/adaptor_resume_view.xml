@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <odoo>
+
+
+
+
+        <record id="wal_adaptation_price_view_form" model="ir.ui.view">
+        <field name="name">adaptor.resume.form</field>
+        <field name="model">adaptor.resume</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                        <group>
+                            <field name="wal_xls_file"></field>
+                            <field name="wal_customize_import" string="Customiser l'import"/>
+                        </group>
+                            <group attrs="{'invisible': [('wal_customize_import', '=', False)]}">
+                            <p> info : </p>
+                            <p> exemple : Vous voulez importer les produits ou le code barre est présent dans l'excel: <br/>
+                                - Vous choisissez pour champ de référence : barcode <br/>
+                                - Vous choisissez pour Numero de colonne de référence : le numéro de la colonne de l'excel ou se trouvent les codes barres </p>
+                                <field name="wal_selection_reference_field"/>
+                                <field name="wal_col_excel_reference"/>
+
+                            <p> Champs à adapter : </p>
+                            <p> exemple : Vous voulez adapter le prix. Il est possible d'adapter plusieurs champs à la fois ( 1 par ligne) <br/>
+                                - Vous choisissez pour Numero de colonne de référence : le numéro de la colonne de l'excel ou se trouvent les prix  <br/>
+                                - Vous choisissez pour champ de référence : list_price
+                                </p>
+
+                                <field name="wal_import_properties_ids">
+                                    <tree string="Products modified" editable="bottom">
+                                        <field name="wal_col_excel_import"/>
+                                        <field name="wal_field_related_to_col"/>
+                                        
+                                    </tree>
+                                </field>
+                            
+                            </group>
+                            <group>
+                            <field name="wal_product_modif_ids">
+                             <tree string="Products modified">
+                                <field name="wal_product_id"/>
+                                <field name="wal_field_type"/>
+                                <field name="wal_old"/>
+                                <field name="wal_new"/>
+                                
+                            </tree>
+                            </field>
+                        </group>
+
+                </sheet>
+            </form>
+        </field>
+        </record>
+
+
+        <record id="wal_adaptation_price_view_tree" model="ir.ui.view">
+        <field name="name">adaptor.resume.tree</field>
+        <field name="model">adaptor.resume</field>
+        <field name="arch" type="xml">
+            <tree string="Modifications">
+                <field name="wal_date_modif"/>
+                <field name="wal_xls_file"/>
+            </tree>
+        </field>
+        </record>
+
+
+
+  
+    <record  id="wal_adaptation_action" model="ir.actions.act_window">
+    <field name="name">Adaptions Resume</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">adaptor.resume</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class='o_view_nocontent_smiling_face'>
+        create a new adaption ! 
+      </p>
+    </field>
+
+    
+    </record>
+  
+  
+  
+  </odoo>
+  

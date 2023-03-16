@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+      <menuitem name="adaptator Menu" 
+            id="wal_adaptator_root" 
+            sequence="5">
+
+        <menuitem name="Adjust prices" 
+            id="wal_adaptator_action_root" 
+            sequence = "5"
+            action="wal_adaptation_action"/>
+        <menuitem name="Adjusted products" 
+            id="wal_adaptator_product_root" 
+            sequence = "5"
+            action="wal_adaptation_product_action"/>
+
+    </menuitem>
+
+
+</odoo>

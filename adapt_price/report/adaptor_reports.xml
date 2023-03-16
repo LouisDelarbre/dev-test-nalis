@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Main report templates -->
+    <template id="wal_report_resume">
+        <t t-foreach="docs" t-as="resume">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>
+                        Value changed on the : 
+                            <span t-field="resume.wal_date_modif"/>
+                        </h2>
+                        <div>
+                            <strong>Value to adapt </strong>
+
+                            <table class="table" t-if="resume.wal_product_modif_ids">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Field </th>
+                                        <th>Old </th>
+                                        <th>New </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="offers" t-value="resume.mapped('wal_product_modif_ids')"/>
+                                    <tr t-foreach="offers" t-as="product">
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span t-field="product.wal_product_id"/>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span t-field="product.wal_field_type"/>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span t-field="product.wal_old"/>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span t-field="product.wal_new"/>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
